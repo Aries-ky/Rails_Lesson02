@@ -1,0 +1,45 @@
+img {
+  width: 100%;
+}
+
+.main_box {
+  display: inline-block;
+  width: 900px;
+  height: 300px;
+  margin-top: 50px;
+  margin: 50px 50px 0 50px;
+  border-radius: 30px;
+  border:3px solid #634B66
+}
+
+.main_box:hover {
+  background-color: #F7F3E3;
+}
+
+.sab_image {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 350px;
+  height: 250px;
+  display: inline-block;
+}
+
+.sab_box {
+  width:  500px;
+  height: 250px;
+  margin-left: 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+.title {
+  font-size: 64px;
+}
+
+.price {
+  font-size: 32px;
+}
+
+.max_user {
+  font-size: 32px;
+}

@@ -1,0 +1,40 @@
+<%= render "sessions/form" %>
+<h3 class="line_box">新規作成</h3>
+<%= form_for @rental do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :title ,"タイトル" %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :price ,"料金（一人あたり、一泊）" %></th>
+      <td><%= f.number_field :price %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :max_user ,"宿泊可能な最大人数" %></th>
+      <td><%= f.number_field :max_user %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :description ,"詳しい説明" %></th>
+      <td><%= f.text_area :description %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :Aria,"都道府県" %></th>
+      <td><%= f.text_field :Aria %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :address ,"住所" %></th>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :image ,"画像" %></th>
+      <td><%= f.file_field :image %></td>
+    </tr>
+  </table>
+  <div>
+    <ul>
+      <li><%= f.submit "登録完了する", class: "menu_btn_left"%></li>
+      <li><%= link_to "戻る", "/", class: "menu_btn_left" %></li>
+    </ul>
+  </div>
+<% end %>

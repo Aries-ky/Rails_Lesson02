@@ -1,0 +1,55 @@
+<%= render "sessions/form" %>
+<h3 class="line_box">物件詳細</h3>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @rental.title %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @rental.price %></td>
+  </tr>
+  <tr>
+    <th>利用可能人数</th>
+    <td><%= @rental.max_user %></td>
+  </tr>
+  <tr>
+    <th>説明</th>
+    <td><%= @rental.description %></td>
+  </tr>
+  <tr>
+    <th>都道府県</th>
+    <td><%= @rental.Aria %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @rental.address %></td>
+  </tr>
+  <tr>
+    <th>登録者</th>
+    <td>
+      <% if @rental.user_id %>
+        <%= User.find(@rental.user_id).name %>
+      <% else %>
+        登録者名エラー
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>画像</th>
+    <td>
+      <% if @rental.image? %>
+        <%= image_tag @rental.image.url, class:"sab_box" %>
+      <% else %>
+        <img src="/assets/default_home.jpeg" class="sab_box">
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<% if session[:user_id] == @rental.user_id %>
+  <%= link_to "編集", [:edit, @rental], class: "menu_btn_left" %>
+<% else %>
+  <%= link_to '予約', new_borrowed_path(rental: @rental), class: "menu_btn_left"  %>
+<% end %>
+<%= link_to '戻る', "/", class: "menu_btn_left" %>

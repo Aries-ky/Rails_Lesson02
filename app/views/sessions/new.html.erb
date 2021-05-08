@@ -1,0 +1,18 @@
+<h3 class="line_box">
+  ユーザー新規作成
+</h3>
+<%= form_for(:session, url: login_path) do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label "メールアドレス" %></th>
+      <td><%= f.text_field :mail %></td>
+    </tr>
+    <tr>
+      <th><%= f.label "パスワード" %></th>
+      <td><%= f.text_field :pass %></td>
+    </tr>
+    <tr>
+      <%= f.submit "Log in", class: "menu_btn_left" %>
+    </tr>
+  </table>
+<% end %>

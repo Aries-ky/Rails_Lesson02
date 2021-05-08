@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "sessions", :media => "all" %>
+<div class="herder">
+  <div class="herder_box">
+    <%= link_to "Ruby On Rails Share", "/", class:"top_logo" %>
+
+    <div class="search">
+    <%= search_form_for @search do |f| %>
+      <%= f.search_field :Aria_or_address_or_description_or_title_cont, class:"search-box" %>
+      <%= f.submit "検索" %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="login_nav">
+    <% if logged_in? %>
+      <div class="login_icon">
+        <% if @current_user.image? %>
+          <%= link_to image_tag(@current_user.image.url, class:"user_icon"), @current_user %>
+        <% else %>
+          <%= link_to image_tag("/assets/default_icon.jpeg", class:"user_icon"), @current_user %>
+        <% end %>
+      </div>
+      <div class="login_button">
+        <%= link_to "ログアウト", logout_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="login_button">
+        <%= link_to "ログイン", login_path %>
+      </div>
+      <div class="login_button">
+        <%= link_to "新規登録", :new_user %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end %>

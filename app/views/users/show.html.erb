@@ -1,0 +1,88 @@
+<% stylesheet_link_tag "rentals", :media => "all" %>
+
+<%= render "sessions/form" %>
+<h3 class="line_box">
+  ユーザー詳細
+  <%= link_to "削除", @user, class: "menu_btn", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  <%= link_to "編集", [:edit, @user], class: "menu_btn" %>
+</h3>
+  <table>
+    <tr>
+      <th>名前</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.mail %></td>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td><%= @user.pass %></td>
+    </tr>
+    <tr>
+      <th>アイコン</th>
+      <td>
+        <% if @user.image? %>
+          <%= image_tag @user.image.url, class:"show_image" %>
+        <% else %>
+          <img src="/assets/default_icon.jpeg" class="show_image">
+        <% end %>
+      </td>
+    </tr>
+    <th>自己紹介</th>
+    <td><%= @user.text %></td>
+  </table>
+
+<p class="line_box">
+  登録物件情報
+  <%= link_to "物件の新規登録", "../rentals/new", class: "menu_btn" %>
+</p>
+<% stylesheet_link_tag "rentals", :media => "all" %>
+<% @rental.each do |rental| %>
+  <%= link_to(rental) do %>
+    <div class="main_box">
+      <div class="sab_image">
+        <% if rental.image? %>
+          <%= image_tag @ental.image.url, class:"sab_image" %>
+        <% else %>
+          <img src="/assets/default_home.jpeg" class="sab_image">
+        <% end %></td>
+      </div>
+      <div class="sab_box">
+        <span class="title"><%= rental.title %></span><br>
+        <span class="price"><%= rental.price %>円</span><br>
+        <span class="max_user"><%= rental.max_user %>人まで</span><br>
+        <span class="aria"><%= rental.Aria %></span>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<p class="line_box">利用履歴</p>
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>利用日数</th>
+      <th>利用人数</th>
+      <th>料金</th>
+      <th>物件詳細</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @borrowed.each do |borrowed| %>
+      <% borrowed_show = Rental.find(borrowed.property_id) %>
+      <tr>
+        <td><%= borrowed_show.title %></td>
+        <td><%= borrowed.lodgment_start %></td>
+        <td><%= (borrowed.lodgment_end - borrowed.lodgment_start).to_i  %></td>
+        <td><%= borrowed.user %></td>
+        <td><%= borrowed.price %></td>
+        <td><%= link_to "詳細", rental_path(borrowed.property_id) %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<div><%= link_to "戻る", "/", class: "menu_btn" %></div>
