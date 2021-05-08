@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "rentals", :media => "all" %>
+<% @items.each do |rental| %>
+  <%= link_to(rental) do %>
+    <div class="main_box">
+      <div class="sab_image">
+        <% if rental.image? %>
+          <%= image_tag @ental.image.url, class:"sab_image" %>
+        <% else %>
+          <img src="/assets/default_home.jpeg" class="sab_image">
+        <% end %></td>
+      </div>
+      <div class="sab_box">
+        <span class="title"><%= rental.title %></span><br>
+        <span class="price"><%= rental.price %>円</span><br>
+        <span class="max_user"><%= rental.max_user %>人まで</span><br>
+        <span class="aria"><%= rental.Aria %></span>
+      </div>
+    </div>
+  <% end %>
+<% end %>

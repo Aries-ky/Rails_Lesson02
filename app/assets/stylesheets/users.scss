@@ -1,0 +1,50 @@
+table th {
+    background-color: #AF9164;
+    padding: 10px 20px;
+}
+
+table td {
+    background-color: #F7F3E3;
+    padding: 10px 20px;
+}
+
+.notice {
+    background-color: #ccf;
+    padding: 5px;
+}
+
+.show_image {
+    width: 128px;
+    height: 128px;
+}
+
+.user_icon {
+    width: 48px;
+    height: 48px;
+}
+
+.line_box {
+  border-top: 2px solid #634B66;
+  border-bottom: 3px solid #634B66;
+  font-size: 32px;
+}
+
+.menu_btn {
+  background-color: #B3B6B7;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  float: right;
+  color: black;
+  border-radius: 5px;
+  font-size: 32px;
+}
+
+.menu_btn_left {
+  background-color: #B3B6B7;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+  border-radius: 5px;
+  font-size: 32px;
+}

@@ -1,0 +1,72 @@
+<%= render "sessions/form" %>
+<h3 class="line_box">物件詳細</h3>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @rental.title %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @rental.price %></td>
+  </tr>
+  <tr>
+    <th>利用可能人数</th>
+    <td><%= @rental.max_user %></td>
+  </tr>
+  <tr>
+    <th>説明</th>
+    <td><%= @rental.description %></td>
+  </tr>
+  <tr>
+    <th>都道府県</th>
+    <td><%= @rental.Aria %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @rental.address %></td>
+  </tr>
+  <tr>
+    <th>登録者</th>
+    <td>
+      <% if @rental.user_id %>
+        <%= User.find(@rental.user_id).name %>
+      <% else %>
+        登録者名エラー
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>画像</th>
+    <td>
+      <% if @rental.image? %>
+        <%= image_tag @rental.image.url, class:"sab_box" %>
+      <% else %>
+        <img src="/assets/default_home.jpeg" class="sab_box">
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<%= form_for @borrowed, url: {action: "confirm"} do |form| %>
+<table>
+  <tr>
+    <th><%= form.label "宿泊開始日" %></th>
+    <td><%= form.date_select :lodgment_start %></td>
+  </tr>
+  <tr>
+    <th><%= form.label "宿泊終了日" %></th>
+    <td><%= form.date_select :lodgment_end %></td>
+  </tr>
+  <tr>
+    <th><%= form.label "利用人数" %></th>
+    <td><%= form.number_field :user %></td>
+  </tr>
+
+  <%= form.hidden_field :property_id, :value => @rental.id %>
+  <tr>
+    <th>
+    <%= form.submit "登録", class: "menu_btn_left" %>
+    </th>
+  </tr>
+<% end %>
+
